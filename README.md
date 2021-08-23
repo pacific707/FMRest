@@ -1,3 +1,3 @@
 # FMRest
 
-A description of this package.
+This is the networking layer to FMData
