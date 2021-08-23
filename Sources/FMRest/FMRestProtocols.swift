@@ -26,3 +26,4 @@ public protocol FMRestCredentials {
     var headers: [FMRest.Header] { get }
     
 }
+

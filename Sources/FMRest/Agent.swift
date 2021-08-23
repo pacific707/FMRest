@@ -2,7 +2,6 @@
 import Foundation
 import Combine
 
-
 public enum FMRest {
     
     public struct Agent {
