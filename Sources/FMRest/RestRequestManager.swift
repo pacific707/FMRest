@@ -61,7 +61,7 @@ extension FMRest {
         endpoint: EndpointPath,
         queryParameters: [URLQueryItem] = []
     ) -> URLRequest {
-        self.createRequest(credentials: credentials, host: host, config: config, method: method, endpoint: endpoint, queryParameters: [], data: .nothing)
+        self.createRequest(credentials: credentials, host: host, config: config, method: method, endpoint: endpoint, queryParameters: queryParameters, data: .nothing)
     }
     
     public static func createRequest<T: Encodable>(
