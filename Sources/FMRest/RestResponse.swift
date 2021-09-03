@@ -90,6 +90,7 @@ extension FMRest {
             public var requestMethod: DebugEvent
             public var request: DebugEvent
             
+            
             public init(
                 publisherReceiveSubscription: DebugEvent = .none,
                 publisherReceiveOutput: DebugEvent = .none,
