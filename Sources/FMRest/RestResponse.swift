@@ -72,23 +72,23 @@ extension FMRest {
     
     public struct ServerOptions {
         
-        public let printDebug: PrintSet
+        public var printDebug: PrintSet
         
         public init(printDebug: PrintSet = PrintSet()) {
             self.printDebug = printDebug
         }
         
         public struct PrintSet {
-            let publisherReceiveSubscription: DebugEvent
-            let publisherReceiveOutput: DebugEvent
-            let publisherReceiveCompletion: DebugEvent
-            let publisherReceiveCancel: DebugEvent
-            let publisherReceiveRequest: DebugEvent
-            let requestHeader: DebugEvent
-            let requestBody: DebugEvent
-            let requestURL: DebugEvent
-            let requestMethod: DebugEvent
-            let request: DebugEvent
+            var publisherReceiveSubscription: DebugEvent
+            var publisherReceiveOutput: DebugEvent
+            var publisherReceiveCompletion: DebugEvent
+            var publisherReceiveCancel: DebugEvent
+            var publisherReceiveRequest: DebugEvent
+            var requestHeader: DebugEvent
+            var requestBody: DebugEvent
+            var requestURL: DebugEvent
+            var requestMethod: DebugEvent
+            var request: DebugEvent
             
             public init(
                 publisherReceiveSubscription: DebugEvent = .none,
