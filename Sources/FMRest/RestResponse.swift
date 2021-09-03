@@ -70,4 +70,58 @@ extension FMRest {
         
     }
     
+    public struct ServerOptions {
+        
+        public let printDebug: PrintSet
+        
+        public init(printDebug: PrintSet) {
+            self.printDebug = printDebug
+        }
+        
+        public struct PrintSet {
+            let publisherReceiveSubscription: DebugEvent
+            let publisherReceiveOutput: DebugEvent
+            let publisherReceiveCompletion: DebugEvent
+            let publisherReceiveCancel: DebugEvent
+            let publisherReceiveRequest: DebugEvent
+            let requestHeader: DebugEvent
+            let requestBody: DebugEvent
+            let requestURL: DebugEvent
+            let requestMethod: DebugEvent
+            let request: DebugEvent
+            
+            init(
+                publisherReceiveSubscription: DebugEvent = .none,
+                publisherReceiveOutput: DebugEvent = .none,
+                publisherReceiveCompletion: DebugEvent = .none,
+                publisherReceiveCancel: DebugEvent = .none,
+                publisherReceiveRequest: DebugEvent = .none,
+                requestHeader: DebugEvent = .none,
+                requestURL: DebugEvent = .none,
+                requestBody: DebugEvent = .none,
+                requestMethod: DebugEvent = .none,
+                request: DebugEvent = .none
+            ) {
+                self.publisherReceiveSubscription = publisherReceiveSubscription
+                self.publisherReceiveOutput = publisherReceiveOutput
+                self.publisherReceiveCompletion = publisherReceiveCompletion
+                self.publisherReceiveCancel = publisherReceiveCancel
+                self.publisherReceiveRequest = publisherReceiveRequest
+                self.requestHeader = requestHeader
+                self.requestBody = requestBody
+                self.requestURL = requestURL
+                self.requestMethod = requestMethod
+                self.request = request
+            }
+            
+        }
+        
+        public enum DebugEvent: Hashable {
+            case print(_ label: String?)
+            case none
+            
+        }
+        
+    }
+    
 }

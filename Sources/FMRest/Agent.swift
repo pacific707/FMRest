@@ -6,10 +6,11 @@ public enum FMRest {
     
     public struct Agent {
         
-        public static func run<T: Decodable>(_ request : URLRequest) -> AnyPublisher<Response<T>, APIError> {
-            
+        public static func run<T: Decodable>(_ request : URLRequest, config: FMRestConfig) -> AnyPublisher<Response<T>, APIError> {
+            printDebugRequest(request: request, options: config.options)
             var token: String?
             return URLSession.shared.dataTaskPublisher(for: request)
+                .printForDebugging(config.options)
                 .mapError { error -> APIError in
                     APIError.requestError(error: error)
                 }
@@ -67,7 +68,7 @@ public enum FMRest {
                         return APIError.unknown(error: error)
                     }
                 }
-                .decode(type: Response<T>.self, decoder: JSONDecoder())
+                .decode(type: Response<T>.self, decoder: config.decoder)
                 .mapError {
                     $0 as? APIError ?? APIError.decodingError(error: $0)
                 }
@@ -82,6 +83,36 @@ public enum FMRest {
             
         }
 
+    }
+    
+    static func printDebugRequest(request: URLRequest, options: ServerOptions) {
+        
+        if case .print(let label) = options.printDebug.request {
+            print("\(label ?? "") \(request)")
+        }
+        
+        if case .print(let label) = options.printDebug.requestMethod {
+            print("\(label ?? "") \(request.httpMethod ?? "None")")
+        }
+        
+        if case .print(let label) = options.printDebug.requestURL {
+            print("\(label ?? "") \(request.url?.absoluteString ?? "None")")
+        }
+        
+        if case .print(let label) = options.printDebug.requestBody {
+            if let data = request.httpBody {
+                print("\(label ?? "") \(String(decoding: data, as: UTF8.self))")
+            } else {
+                print("\(label ?? "") no body")
+            }
+        }
+        
+        if case .print(let label) = options.printDebug.requestHeader {
+            if let headers = request.allHTTPHeaderFields {
+                print("\(label ?? "") \(headers)")
+            }
+        }
+        
     }
 
 }
