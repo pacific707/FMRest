@@ -79,16 +79,16 @@ extension FMRest {
         }
         
         public struct PrintSet {
-            var publisherReceiveSubscription: DebugEvent
-            var publisherReceiveOutput: DebugEvent
-            var publisherReceiveCompletion: DebugEvent
-            var publisherReceiveCancel: DebugEvent
-            var publisherReceiveRequest: DebugEvent
-            var requestHeader: DebugEvent
-            var requestBody: DebugEvent
-            var requestURL: DebugEvent
-            var requestMethod: DebugEvent
-            var request: DebugEvent
+            public var publisherReceiveSubscription: DebugEvent
+            public var publisherReceiveOutput: DebugEvent
+            public var publisherReceiveCompletion: DebugEvent
+            public var publisherReceiveCancel: DebugEvent
+            public var publisherReceiveRequest: DebugEvent
+            public var requestHeader: DebugEvent
+            public var requestBody: DebugEvent
+            public var requestURL: DebugEvent
+            public var requestMethod: DebugEvent
+            public var request: DebugEvent
             
             public init(
                 publisherReceiveSubscription: DebugEvent = .none,
