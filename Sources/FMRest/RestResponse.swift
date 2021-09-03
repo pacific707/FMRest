@@ -74,7 +74,7 @@ extension FMRest {
         
         public let printDebug: PrintSet
         
-        public init(printDebug: PrintSet) {
+        public init(printDebug: PrintSet = PrintSet()) {
             self.printDebug = printDebug
         }
         
@@ -90,7 +90,7 @@ extension FMRest {
             let requestMethod: DebugEvent
             let request: DebugEvent
             
-            init(
+            public init(
                 publisherReceiveSubscription: DebugEvent = .none,
                 publisherReceiveOutput: DebugEvent = .none,
                 publisherReceiveCompletion: DebugEvent = .none,
