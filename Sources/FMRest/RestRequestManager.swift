@@ -72,13 +72,13 @@ extension FMRest {
         endpoint: EndpointPath,
         queryParameters: [URLQueryItem] = [],
         data: T
-    ) -> Result<URLRequest, FMRest.APIError> {
+    ) throws -> URLRequest {
         let jsonData: Data
         do {
             jsonData = try JSONEncoder().encode(data)
-            return .success(self.createRequest(credentials: credentials, host: host, config: config, method: method, endpoint: endpoint, queryParameters: queryParameters, data: .json(data: jsonData)))
+            return self.createRequest(credentials: credentials, host: host, config: config, method: method, endpoint: endpoint, queryParameters: queryParameters, data: .json(data: jsonData))
         } catch {
-            return .failure(FMRest.APIError.encodingError(error: error))
+            throw FMRest.APIError.encodingError(error: error)
         }
     }
     
