@@ -65,7 +65,11 @@ public enum FMRest {
                             return APIError.decodingError(error: error)
                         }
                     default:
-                        return APIError.unknown(error: error)
+                        if let nError = error as? APIError {
+                            return nError
+                        } else {
+                            return APIError.unknown(error: error)
+                        }
                     }
                 }
                 .decode(type: Response<T>.self, decoder: config.decoder)
