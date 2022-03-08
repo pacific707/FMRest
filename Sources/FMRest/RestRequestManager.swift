@@ -75,7 +75,7 @@ extension FMRest {
     ) throws -> URLRequest {
         let jsonData: Data
         do {
-            jsonData = try JSONEncoder().encode(data)
+            jsonData = try config.encoder.encode(data)
             return self.createRequest(credentials: credentials, host: host, config: config, method: method, endpoint: endpoint, queryParameters: queryParameters, data: .json(data: jsonData))
         } catch {
             throw FMRest.APIError.encodingError(error: error)

@@ -20,6 +20,7 @@ public protocol FMRestConfig {
     var scheme: String { get set }
     var rootPath: String { get set }
     var decoder: JSONDecoder { get set }
+    var encoder: JSONEncoder { get set }
     var options: FMRest.ServerOptions { get set }
 }
 
