@@ -82,6 +82,7 @@ extension FMRest {
         }
     }
     
+    
     private static func createRequest(
         credentials: FMRestCredentials,
         host: String,

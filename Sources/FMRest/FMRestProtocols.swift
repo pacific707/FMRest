@@ -22,6 +22,7 @@ public protocol FMRestConfig {
     var decoder: JSONDecoder { get set }
     var encoder: JSONEncoder { get set }
     var options: FMRest.ServerOptions { get set }
+    
 }
 
 public protocol FMRestCredentials {
